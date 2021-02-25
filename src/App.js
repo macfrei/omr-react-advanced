@@ -1,9 +1,9 @@
-import { loadFromLocal, saveToLocal } from '../lib/localStorage'
+import { loadFromLocal, saveToLocal } from './lib/localStorage'
 import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import AppForm from './AppForm'
-import HomePage from './HomePage'
 import styled from 'styled-components/macro'
+import AppForm from './components/AppForm'
+import HomePage from './pages/HomePage'
 
 export default function App() {
   const [todos, setTodos] = useState(loadFromLocal('todos') ?? [])
