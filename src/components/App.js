@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
 import { loadFromLocal, saveToLocal } from '../lib/localStorage'
-import AppForm from './AppForm'
+import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import AppForm from './AppForm'
+import HomePage from './HomePage'
+import styled from 'styled-components/macro'
 
-function App() {
+export default function App() {
   const [todos, setTodos] = useState(loadFromLocal('todos') ?? [])
 
   useEffect(() => {
@@ -11,14 +13,10 @@ function App() {
   }, [todos])
 
   return (
-    <div>
+    <AppLayout>
+      <HomePage todos={todos} />
       <AppForm onAddTodo={handleTodo} />
-      <ul>
-        {todos.map(({ todo, id }) => (
-          <li key={id}>{todo}</li>
-        ))}
-      </ul>
-    </div>
+    </AppLayout>
   )
 
   function handleTodo(todo) {
@@ -26,4 +24,8 @@ function App() {
   }
 }
 
-export default App
+const AppLayout = styled.div`
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+`
