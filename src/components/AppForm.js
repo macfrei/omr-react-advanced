@@ -11,6 +11,7 @@ export default function AppForm({ onAddTodo }) {
   )
 
   function handleSubmit(event) {
+    console.log(event)
     event.preventDefault()
     const form = event.target
     const input = form.elements.todo

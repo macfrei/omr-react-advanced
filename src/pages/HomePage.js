@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function HomePage({ todos }) {
   return (
     <div>
@@ -8,6 +10,7 @@ export default function HomePage({ todos }) {
           <li key={id}>{todo}</li>
         ))}
       </ul>
+      <Link to="/create">Write a todo</Link>
     </div>
   )
 }
